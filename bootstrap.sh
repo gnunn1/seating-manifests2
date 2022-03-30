@@ -1,0 +1,1 @@
+oc apply -k bootstrap/argocd/base -n openshift-gitops

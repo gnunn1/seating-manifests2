@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: '0'
+  name: seating-ns
+spec:
+  destination:
+    namespace: seating
+    server: https://kubernetes.default.svc
+  project: seating
+  source:
+    path: components/config/namespaces/seating/base
+    repoURL: https://github.com/gnunn1/seating-manifests2.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      selfHeal: true
